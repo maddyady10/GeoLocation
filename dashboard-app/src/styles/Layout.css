@@ -1,0 +1,46 @@
+/* src/styles/Layout.css */
+.layout {
+    display: flex;
+    min-height: 100vh;
+    position: relative; /* Ensure the layout is relative for positioning child elements */
+  }
+  
+  .sidebar {
+    width: 200px; /* Adjust width as needed */
+    background-color: #0b33c5;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(128, 45, 45, 0.9);
+    position: fixed; /* Fix the sidebar in place */
+    top: 0;
+    left: 0;
+    bottom: 0; /* Make it extend to the bottom */
+    overflow-y: auto; /* Allow scrolling inside the sidebar if content overflows */
+  }
+  
+  .main-content {
+    margin-left: 290px; /* Push the content to the right to accommodate the sidebar */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    width: calc(100% - 250px); /* Ensure it spans the remaining width */
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 0px; /* Align with the right edge of the sidebar */
+    z-index: 1000;
+    width: 100%; /* Ensure it's above other content */
+  }
+  
+  .content {
+    margin-top: 50px; /* Space for the fixed navbar */
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto; /* Allow scrolling inside the content */
+    height: calc(100vh - 50px); /* Ensure the content area takes full height minus the navbar height */
+  }
+  

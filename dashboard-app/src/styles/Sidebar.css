@@ -1,0 +1,31 @@
+.sidebar {
+    background-color: #3edc1a;
+    padding: 20px;
+    width: 50%; /* Adjust width as needed */
+  }
+  
+  .sidebar h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #bf1717;
+  }
+  
+  .sidebar-links {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar-links li {
+    margin-bottom: 25px;
+  }
+  
+  .sidebar-links a {
+    color: #4f0c0c;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .sidebar-links a:hover {
+    text-decoration: underline;
+  }
+  
