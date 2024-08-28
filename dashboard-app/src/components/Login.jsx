@@ -1,6 +1,7 @@
 // src/components/Login.jsx
 import React, { useState } from 'react';
-import '../styles/Login.css'; // Optional: create this CSS file for styling
+import '../styles/Login.css'; // We'll update the CSS for styling
+
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -8,39 +9,40 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Handle login logic here, e.g., authenticate the user
+    // Handle login logic here
     console.log('Email:', email);
     console.log('Password:', password);
-    // Redirect to dashboard or show an error message based on authentication
   };
 
   return (
-    
     <div className="login-container">
-      <form className="login-form" onSubmit={handleLogin}>
-        <h2>Login</h2>
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            placeholder="Enter your email"
-          />
-        </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder="Enter your password"
-          />
-        </div>
-        <button type="submit" className="login-button">Login</button>
-      </form>
+      <div className="login-box">
+        <h1>GAIL Admin Portal</h1>
+        <p className="login-subtitle">Manage your operations with ease</p>
+        <form className="login-form" onSubmit={handleLogin}>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Enter your email"
+            />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="Enter your password"
+            />
+          </div>
+          <button type="submit" className="login-button">Login</button>
+        </form>
+      </div>
     </div>
   );
 }
