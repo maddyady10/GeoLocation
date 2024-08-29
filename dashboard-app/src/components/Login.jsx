@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Login.css'; 
 import { FaUserCircle } from 'react-icons/fa';  // Import user icon
-import axios from 'axios';
+
 
 function Login() {
   const [email, setEmail] = useState('');

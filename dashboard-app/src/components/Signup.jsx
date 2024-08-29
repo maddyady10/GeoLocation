@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';  // Import axios
+import { useNavigate } from 'react-router-dom';  // Import useNavigate for redirection
 import '../styles/Signup.css';  // Updated CSS file for Signup
 import { FaUserPlus } from 'react-icons/fa';  // Importing icon
 
@@ -7,6 +8,7 @@ function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();  // Initialize useNavigate
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -16,12 +18,13 @@ function Signup() {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/api/web/signup', {
+      const response = await axios.post('http://localhost:8000/api/web/signup', {
         email,
         password
       });
       console.log('Signup response:', response.data);
       alert('Signup successful!');
+      navigate('/login');  // Redirect to login page
     } catch (error) {
       console.error('Error during signup:', error);
       alert('Signup failed. Please try again.');
