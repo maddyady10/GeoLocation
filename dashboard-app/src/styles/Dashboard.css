@@ -1,17 +1,153 @@
 .dashboard {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(to right, #090909, #3a3931); /* Gradient background */
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: hidden; /* Ensure no content spills out */
+}
+
+.dashboard-content {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  /* background-color: rgba(0, 0, 0, 0); */
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.0);
+  transition: all 0.3s ease;
+}
+
+/* .main-content:hover {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+} */
+
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.stat-item {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  flex: 1;
+  margin: 0 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Ensure stripe effect stays within the card */
+}
+
+.stat-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, rgba(4, 4, 4, 0.3), rgba(238, 172, 172, 0.3));
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover::before {
+  transform: translateX(0);
+}
+
+.stat-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  animation: glow 1s ease-in-out infinite;
+}
+
+
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   }
-  
-  .dashboard-content {
-    display: flex;
-    flex: 1;
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
   }
-  
-  .main-content {
-    flex: 1;
-    padding: 20px;
-    background-color: #eaeaea;
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   }
-  
+}
+
+.present { background-color: #28a745; color: #000000; }
+.absent { background-color: #dc3545; color: #000000; }
+.active { background-color: #007bff; color: #000000; }
+.inactive { background-color: #ffc107; color: #000000; }
+
+.charts-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chart {
+  flex: 1;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.chart h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.calendar-section {
+  width: 300px;
+  margin-left: 20px;
+  position: sticky;
+  top: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.stats-container,
+.charts-container,
+.leave-requests {
+  animation: fadeIn 1s ease-out;
+}
+
+.chart {
+  animation: slideUp 1s ease-out;
+}
+
+.leave-requests {
+  margin-top: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0);
+}

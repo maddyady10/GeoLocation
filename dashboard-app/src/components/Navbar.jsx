@@ -10,6 +10,8 @@ function Navbar() {
         <li><a href="#home">Home</a></li>
         <li><a href="#settings">Settings</a></li>
         <li><a href="/login">LOGIN</a></li>
+        <li><a href="/signup">SIGNUP</a></li>
+        <li><a href="#login">     </a></li>
       </ul>
     </nav>
   );

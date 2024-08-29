@@ -1,7 +1,6 @@
-// src/components/Login.jsx
 import React, { useState } from 'react';
-import '../styles/Login.css'; // We'll update the CSS for styling
-
+import '../styles/Login.css'; 
+import { FaUserCircle } from 'react-icons/fa';  // Import user icon
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -9,14 +8,19 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Handle login logic here
     console.log('Email:', email);
     console.log('Password:', password);
+  };
+
+  const handleForgotPassword = () => {
+    // Handle forgot password logic here, like redirecting to another page or showing a modal
+    console.log('Forgot password clicked');
   };
 
   return (
     <div className="login-container">
       <div className="login-box">
+        <FaUserCircle className="user-icon" /> {/* Add user icon here */}
         <h1>GAIL Admin Portal</h1>
         <p className="login-subtitle">Manage your operations with ease</p>
         <form className="login-form" onSubmit={handleLogin}>
@@ -42,6 +46,7 @@ function Login() {
           </div>
           <button type="submit" className="login-button">Login</button>
         </form>
+        <p className="forgot-password" onClick={handleForgotPassword}>Forgot Password?</p> {/* Forgot password option */}
       </div>
     </div>
   );

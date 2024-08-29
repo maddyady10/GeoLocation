@@ -1,0 +1,43 @@
+/* src/styles/AttendanceManagement.css */
+.attendance-management {
+    color: #fff;
+    background-color: #121212;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  .map-container {
+    margin-bottom: 20px;
+    height: 400px;
+  }
+  
+  .map {
+    height: 100%;
+    border-radius: 8px;
+  }
+  
+  .employee-table-container {
+    overflow-x: auto;
+  }
+  
+  .employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .employee-table th,
+  .employee-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+  }
+  
+  .employee-table th {
+    background-color: #1f1f1f;
+  }
+  
+  .employee-table tr:hover {
+    background-color: #333;
+  }
+  
