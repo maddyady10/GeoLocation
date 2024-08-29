@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';  // Import axios
 import '../styles/Signup.css';  // Updated CSS file for Signup
 import { FaUserPlus } from 'react-icons/fa';  // Importing icon
 
@@ -7,15 +8,24 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert('Passwords do not match!');
       return;
     }
-    // Handle signup logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
+
+    try {
+      const response = await axios.post('http://localhost:3000/api/web/signup', {
+        email,
+        password
+      });
+      console.log('Signup response:', response.data);
+      alert('Signup successful!');
+    } catch (error) {
+      console.error('Error during signup:', error);
+      alert('Signup failed. Please try again.');
+    }
   };
 
   return (

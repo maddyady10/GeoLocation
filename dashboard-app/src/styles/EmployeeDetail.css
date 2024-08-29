@@ -1,0 +1,26 @@
+/* src/styles/EmployeeDetail.css */
+
+.employee-detail {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .employee-detail h2 {
+    margin-bottom: 20px;
+  }
+  
+  .employee-detail ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .employee-detail li {
+    margin-bottom: 10px;
+  }
+  
+  .employee-detail img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 8px;
+  }
+  

@@ -3,14 +3,13 @@ body, html {
   padding: 0;
   height: 100%;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to right, rgba(217, 100, 5, 0.2), rgba(0, 0, 0, 0.4)), 
-  url('../assets/GAIL_Pipeline.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
+  background: linear-gradient(to right, rgba(14, 13, 14, 0.9), rgba(0, 0, 0, 0.4));
 }
 
 .user-icon {
   font-size: 60px;
+  background-size: cover;
+  color: #fff;
   color: #FFD700;
   margin-bottom: 20px;
 }

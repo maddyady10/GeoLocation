@@ -10,7 +10,7 @@ import RemoteAccess from './components/RemoteAccess';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import AttendanceManagement from './components/AttendanceManagement';
-
+import EmployeeDetail from './components/EmployeeDetail';
 
 
 function App() {
@@ -27,8 +27,8 @@ function App() {
         <Route path="/remote-access" element={<RemoteAccess />} />
         <Route path="/login" component={Login} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/attendance-management" element={<AttendanceManagement />} /> {/* Ensure the component is passed here */}
-        {/* Add other routes here */}
+         <Route path="/attendance-management" element={<AttendanceManagement />} /> {/* Ensure the component is passed here */}
+         <Route path="/employee-detail" element={<EmployeeDetail />} />{/* Add other routes here */}
       </Routes>
     </Router>
     

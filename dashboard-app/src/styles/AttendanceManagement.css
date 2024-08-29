@@ -40,4 +40,13 @@
   .employee-table tr:hover {
     background-color: #333;
   }
+  .map-container {
+    height: 500px;
+    width: 100%;
+  }
+  
+  .map {
+    height: 100%;
+    width: 100%;
+  }
   
