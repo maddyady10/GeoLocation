@@ -23,4 +23,44 @@
     height: auto;
     border-radius: 8px;
   }
+  .employee-detail {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .employee-detail h2,
+  .employee-detail h3 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .employee-detail ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .employee-detail ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .attendance-table th,
+  .attendance-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .attendance-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
   
