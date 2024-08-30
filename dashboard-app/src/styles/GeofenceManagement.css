@@ -76,7 +76,7 @@
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  color:black;
+  color: black;
 }
 
 .form-group input {
@@ -84,7 +84,7 @@
   padding: 50px;
   border: 1px solid #743d3d;
   border-radius: 4px;
-  color: black;
+  color: black; /* Set text color to black */
 }
 
 .form-container button {
