@@ -3,8 +3,17 @@
     display: flex;
     min-height: 100vh;
     position: relative; /* Ensure the layout is relative for positioning child elements */
+    background: linear-gradient(180deg, #f1f2f5, #f8f8fa);
   }
-  
+ 
+
+    /* body, html {
+
+    background: linear-gradient(to right, rgba(217, 100, 5, 0.2), rgba(0, 0, 0, 0.4)), 
+    url('../assets/bg1.png') no-repeat center center fixed;
+
+    } */
+
   .sidebar {
     width: 200px; /* Adjust width as needed */
     background-color: #8191cb;
@@ -25,9 +34,9 @@
   }
   
   .navbar {
-    background: linear-gradient(180deg, #2f62ef, #1a4fe1);
+    background: linear-gradient(100deg, #2f62ef, #2f62ef);
     box-shadow: 2px 0 5px rgba(4, 4, 4, 0.9);
-    color: rgb(8, 8, 8);
+    color: rgb(242, 234, 234);
     padding: 10px;
     width: calc(100% - 250px); /* Ensure it spans the remaining width */
     position: fixed; /* Fixed at the top */

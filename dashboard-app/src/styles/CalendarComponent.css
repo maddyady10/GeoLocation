@@ -3,7 +3,7 @@
   .calendar {
     position: relative;
     width: 300px;
-    background: linear-gradient(180deg, #2f62ef, #1a4fe1);
+    background: linear-gradient(180deg, #b2c2f1, #9494f1);
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
@@ -16,13 +16,13 @@
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   }
-  
+
   .calendar__picture {
     position: relative;
     height: 200px;
     padding: 20px;
     color: #fff;
-    background: #262626 url("https://images.unsplash.com/photo-1516912481808-3406841bd33c?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=183f2924ba5a8429441804609b2d4f61") no-repeat center / cover;
+    background: #262626 url('../assets/bg2.png') no-repeat center / cover;
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
   
@@ -33,11 +33,12 @@
       top: 0;
       bottom: 0;
       position: absolute;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1));
+      background: linear-gradient(to top, rgba(187, 68, 68, 0.25), rgba(0, 0, 0, 0.1));
     }
   
     h2 {
       margin: 0;
+      color: #fff;
     }
   
     h3 {

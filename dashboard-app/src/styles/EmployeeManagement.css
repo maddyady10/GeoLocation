@@ -28,6 +28,16 @@
   border-radius: 4px;
   box-sizing: border-box;
 }
+h2{
+  color: rgb(9, 9, 9);
+}
+
+.employee-list {
+  color: rgb(9, 9, 9);
+}
+
+
+
 
 .employee-form button {
   background-color: #4CAF50;

@@ -142,7 +142,7 @@ function EmployeeForm({ addEmployee }) {
             <button
               type="button"
               className="close-button"
-              onClick={() => navigate("/employeeManagement")}
+              onClick={() => navigate("/employee-management")}
             >
               Close
             </button>
