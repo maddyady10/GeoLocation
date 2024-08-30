@@ -16,6 +16,7 @@
     border-radius: 4px 4px 0 0;
   }
   
+  
   .employee-form p {
     color: #666;
     font-size: 14px;
@@ -55,8 +56,9 @@
     width: 100%;
     padding: 8px;
     font-size: 16px;
-    border: 1px solid #ddd;
+    border: 1px solid #0b0b0b;
     border-radius: 4px;
+    color:#000000;
   }
   
   .employee-form .form-actions {

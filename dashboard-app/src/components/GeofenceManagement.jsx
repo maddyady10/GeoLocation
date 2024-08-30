@@ -106,6 +106,64 @@ function GeofenceManagement() {
     <Layout>
       <div className="geofence-management">
         <h2>Geofence Management</h2>
+
+        <div className="form-container">
+          <h3>{editIndex !== null ? 'Edit Office Location' : 'Add New Office Location'}</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="name">Office Name:</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="lat">Latitude:</label>
+                <input
+                  type="number"
+                  id="lat"
+                  name="lat"
+                  step="0.0001"
+                  value={form.lat}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+            </div>
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="lng">Longitude:</label>
+                <input
+                  type="number"
+                  id="lng"
+                  name="lng"
+                  step="0.0001"
+                  value={form.lng}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="radius">Radius (meters):</label>
+                <input
+                  type="number"
+                  id="radius"
+                  name="radius"
+                  step="1"
+                  value={form.radius}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+            <button type="submit">{editIndex !== null ? 'Update Office' : 'Add Office'}</button>
+          </form>
+        </div>
+
         <div className="map-container">
           <MapContainer
             center={[51.505, -0.09]}
@@ -131,67 +189,7 @@ function GeofenceManagement() {
             ))}
           </MapContainer>
         </div>
-        <div className="location-details">
-          {location && (
-            <div>
-              <h3>Selected Location Details</h3>
-              <p>Latitude: {location.lat}</p>
-              <p>Longitude: {location.lng}</p>
-            </div>
-          )}
-        </div>
-        <div className="form-container">
-          <h3>{editIndex !== null ? 'Edit Office Location' : 'Add New Office Location'}</h3>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">Office Name:</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={form.name}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="lat">Latitude:</label>
-              <input
-                type="number"
-                id="lat"
-                name="lat"
-                step="0.0001"
-                value={form.lat}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="lng">Longitude:</label>
-              <input
-                type="number"
-                id="lng"
-                name="lng"
-                step="0.0001"
-                value={form.lng}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="radius">Radius (meters):</label>
-              <input
-                type="number"
-                id="radius"
-                name="radius"
-                step="1"
-                value={form.radius}
-                onChange={handleInputChange}
-              />
-            </div>
-            <button type="submit">{editIndex !== null ? 'Update Office' : 'Add Office'}</button>
-          </form>
-        </div>
+
         <div className="table-container">
           <h3>Office Locations</h3>
           <table>

@@ -19,91 +19,101 @@
   background-color: #f4f4f4;
 }
 
-
 .location-details {
   margin-top: 20px;
   padding: 10px;
   background-color: #fafafd;
   border: 2px solid #0f0e0e;
-  color:#0f0e0e;
+  color: #0f0e0e;
   border-radius: 5px;
 }
-
 
 .content {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
-  color:#0f0e0e;
+  color: #0f0e0e;
 }
 
-  .geofence-management {
-    padding: 20px;
-  }
-  
-  .geofence-management h2 {
-    
-    margin-bottom: 20px;
-  }
-  
-  .map-container {
-    flex: 2;
-    border: 2px solid #3a12bc;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .location-list {
-    background-color: #f4f4f4;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .location-list h3 {
-    margin-bottom: 10px;
-  }
-  
-  .location-list ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .location-list li {
-    padding: 8px;
-    background-color: #eaeaea;
-    margin-bottom: 5px;
-    border-radius: 3px;
-  }
-  /* src/styles/GeofenceManagement.css */
-.form-container {
+.geofence-management {
+  padding: 20px;
+}
+
+.geofence-management h2 {
   margin-bottom: 20px;
 }
 
+.map-container {
+  margin-top: 20px;
+  flex: 2;
+  border: 2px solid #3a12bc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.form-container {
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
 .form-group {
+  flex: 1;
   margin-bottom: 15px;
+  margin-right: 75px; 
+  color: black;
+}
+
+.form-group:last-child {
+  margin-right: 0;
+  color: black;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 5px;
+  color:black;
 }
 
 .form-group input {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
+  padding: 50px;
+  border: 1px solid #743d3d;
   border-radius: 4px;
+  color: black;
 }
 
 .form-container button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #151515;
+  padding: 10px 10px;
+  background-color: #3a12bc;
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .form-container button:hover {
-  background-color: #0056b3;
+  background-color: #24067e;
+}
+
+.location-list {
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 15px;
+  border: 2px solid #3a12bc;
+  list-style: none;
+}
+
+.location-list li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border: 2px solid #3a12bc;
+  border-radius: 4px;
 }
