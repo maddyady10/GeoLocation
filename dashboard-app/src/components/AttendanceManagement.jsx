@@ -11,7 +11,9 @@ function AttendanceManagement() {
 
   // Mock employee data with coordinates
   const employees = [
-    { id: 'E001', name: 'John Doe', designation: 'Software Engineer', status: 'Active', present: 'Yes', coordinates: [51.505, -0.09],image :"dashboard-app/src/assets/JohnDoe.png" },
+    { id: 'E001', name: 'John Doe', designation: 'Software Engineer', status: 'Active', present: 'Yes', coordinates: [51.505, -0.09],
+      
+    },
     { id: 'E002', name: 'Jane Smith', designation: 'Product Manager', status: 'Active', present: 'Yes', coordinates: [51.515, -0.1] },
     { id: 'E003', name: 'Alice Johnson', designation: 'HR Specialist', status: 'Inactive', present: 'No', coordinates: [51.525, -0.08] },
   ];

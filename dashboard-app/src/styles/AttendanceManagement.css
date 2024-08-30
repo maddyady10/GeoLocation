@@ -1,7 +1,7 @@
 /* src/styles/AttendanceManagement.css */
 .attendance-management {
-    color: #fff;
-    background-color: #121212;
+    color: #000000;
+    background-color: #fbf8f8;
     padding: 20px;
     min-height: 100vh;
   }
@@ -34,11 +34,12 @@
   }
   
   .employee-table th {
-    background-color: #1f1f1f;
+    background-color: #faf4f4;
   }
   
   .employee-table tr:hover {
-    background-color: #333;
+    background-color: #4653c5;
+    color:white;
   }
   .map-container {
     height: 500px;
