@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import CalendarComponent from './CalendarComponent'; // Import the new calendar component
 import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2'; // Import Doughnut chart for gauge effect
 import '../styles/Dashboard.css'; // You can create this CSS file for styling
+import OutWork from './OutWork'; // Import the OutWork component
 
 // Register the required components for Chart.js
 Chart.register(ArcElement, Tooltip, Legend);
 
-function Dashboard() {
+const DashboardContent = () => {
   const data = {
     present: 70,
     absent: 30,
@@ -112,6 +113,25 @@ function Dashboard() {
       </div>
     </div>
   );
+};
+
+function Dashboard() {
+  const [isWithinWorkingHours, setIsWithinWorkingHours] = useState(false);
+
+  useEffect(() => {
+    const checkTime = () => {
+      const now = new Date();
+      const hours = now.getHours();
+      setIsWithinWorkingHours(hours >= 8 && hours < 22);
+    };
+
+    checkTime(); // Initial check
+    const intervalId = setInterval(checkTime, 60000); // Check every minute
+
+    return () => clearInterval(intervalId); // Clean up interval on component unmount
+  }, []);
+
+  return isWithinWorkingHours ? <DashboardContent /> : <OutWork />;
 }
 
 export default Dashboard;

@@ -1,0 +1,53 @@
+.outwork {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa; /* Light background color */
+    color: #343a40; /* Dark text color for contrast */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .outwork h1 {
+    font-size: 2.5rem;
+    color: #007bff; /* Primary color for the header */
+    margin-bottom: 20px;
+  }
+  
+  .outwork p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .outwork ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .outwork ul li {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  
+  .outwork ul li:before {
+    content: '•';
+    color: #007bff; /* Primary color for list bullets */
+    margin-right: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .outwork h1 {
+      font-size: 2rem;
+    }
+  
+    .outwork p {
+      font-size: 1rem;
+    }
+  
+    .outwork ul li {
+      font-size: 0.9rem;
+    }
+  }
+  
