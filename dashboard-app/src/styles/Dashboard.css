@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: linear-gradient(to right, #090909, #3a3931); /* Gradient background */
+  background: linear-gradient(to right, #9d5ee5, #5bd4e3); /* Gradient background */
   font-family: 'Poppins', sans-serif;
   position: relative;
   overflow: hidden; /* Ensure no content spills out */
@@ -84,8 +84,8 @@
   }
 }
 
-.present { background-color: #28a745; color: #000000; }
-.absent { background-color: #dc3545; color: #000000; }
+.present { background-color: #0efc06; color: #000000; }
+.absent { background-color: #fa061e; color: #000000; }
 .active { background-color: #007bff; color: #000000; }
 .inactive { background-color: #ffc107; color: #000000; }
 

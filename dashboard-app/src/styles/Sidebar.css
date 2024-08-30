@@ -1,12 +1,12 @@
 /* Sidebar.css */
 .sidebar {
   width: 250px;
-  background: linear-gradient(180deg, #1c1c1c, #333); /* Gradient background */
+  background: linear-gradient(180deg, #f8f8f9, #f6f6f7); /* Gradient background */
   padding: 20px;
   height: 100vh; /* Full height to cover the viewport */
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+  box-shadow: 0 4px 8px rgba(3, 47, 177, 0.6); /* Add shadow for depth */
   transition: background 0.3s ease; /* Smooth transition for background */
 }
 
@@ -24,6 +24,7 @@
 
 .sidebar-header h1 {
   font-size: 22px;
+  
   color: #e0e0e0; /* Light text color */
   transition: color 0.3s ease; /* Smooth transition for header color */
 }
@@ -32,6 +33,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  
 }
 
 .sidebar-links li {
@@ -40,7 +42,7 @@
 
 .sidebar-links a {
   text-decoration: none;
-  color: #e0e0e0; /* Light text color */
+  color: #170505; /* Light text color */
   font-weight: bold;
   display: block;
   padding: 10px;
@@ -50,7 +52,7 @@
 
 .sidebar-links a:hover {
   color: #ffffff; /* Bright text color on hover */
-  background-color: #444; /* Darker background on hover */
+  background: linear-gradient(180deg, #2f62ef, #1a4fe1);
 }
 
 /* Optional: Active link styling */

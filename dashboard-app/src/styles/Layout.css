@@ -7,9 +7,9 @@
   
   .sidebar {
     width: 200px; /* Adjust width as needed */
-    background-color: #0b33c5;
+    background-color: #8191cb;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(128, 45, 45, 0.9);
+    box-shadow: 2px 0 5px rgba(151, 191, 207, 0.9);
     position: fixed; /* Fix the sidebar in place */
     top: 0;
     left: 0;
@@ -25,8 +25,9 @@
   }
   
   .navbar {
-    background-color: #333;
-    color: white;
+    background: linear-gradient(180deg, #2f62ef, #1a4fe1);
+    box-shadow: 2px 0 5px rgba(4, 4, 4, 0.9);
+    color: rgb(8, 8, 8);
     padding: 10px;
     width: calc(100% - 250px); /* Ensure it spans the remaining width */
     position: fixed; /* Fixed at the top */

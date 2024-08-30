@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styles/EmployeeForm.css';
-import Layout from './Layout';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/EmployeeForm.css";
+import Layout from "./Layout";
 
 function EmployeeForm({ addEmployee }) {
   const [form, setForm] = useState({
-    id: '',
-    fullName: '',
-    dob: '',
-    gender: '',
-    phone: '',
-    email: '',
-    address: '',
-    department: '',
-    designation: '',
-    startDate: '',
-    manager: '',
-    deviceId: '',
-    bankDetails: '',
+    staffId: "",
+    fullName: "",
+    email: "",
+    gender: "",
+    phone: "",
+    department: "",
+    designation: "",
+    documents: null,
     photo: null,
   });
 
@@ -31,35 +26,33 @@ function EmployeeForm({ addEmployee }) {
     }));
   };
 
-  const handlePhotoUpload = (e) => {
-    const file = e.target.files[0];
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
     setForm((prevForm) => ({
       ...prevForm,
-      photo: file,
+      [name]: files[0],
     }));
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    addEmployee({
-      ...form,
-      id: parseInt(form.id),
-    });
-    navigate('/employeeManagement'); // Navigate back to employee management page
+    addEmployee(form);
+    navigate("/employeeManagement"); // Navigate back to employee management page
   };
 
   return (
     <Layout>
       <div className="employee-form">
-        <h3>Add New Employee</h3>
+        <h3>Add Employee</h3>
+        <p>Update following Employee Information</p>
         <form onSubmit={handleFormSubmit}>
           <div className="form-row">
             <div className="form-group">
               <label>Staff ID:</label>
               <input
-                type="number"
-                name="id"
-                value={form.id}
+                type="text"
+                name="staffId"
+                value={form.staffId}
                 onChange={handleFormChange}
                 required
               />
@@ -77,32 +70,36 @@ function EmployeeForm({ addEmployee }) {
           </div>
           <div className="form-row">
             <div className="form-group">
-              <label>Gender:</label>
-              <select name="gender" value={form.gender} onChange={handleFormChange} required>
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Phone:</label>
-              <input
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleFormChange}
-                required
-              />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group">
               <label>Email:</label>
               <input
                 type="email"
                 name="email"
                 value={form.email}
+                onChange={handleFormChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Gender:</label>
+              <select
+                name="gender"
+                value={form.gender}
+                onChange={handleFormChange}
+                required
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label>Contact Number:</label>
+              <input
+                type="tel"
+                name="phone"
+                value={form.phone}
                 onChange={handleFormChange}
                 required
               />
@@ -120,26 +117,36 @@ function EmployeeForm({ addEmployee }) {
           </div>
           <div className="form-row">
             <div className="form-group">
-              <label>Designation/Role:</label>
-              <input
-                type="text"
+              <label>Designation:</label>
+              <select
                 name="designation"
                 value={form.designation}
                 onChange={handleFormChange}
                 required
-              />
+              >
+                <option value="Assistant">Assistant</option>
+                <option value="Manager">Manager</option>
+                <option value="Director">Director</option>
+              </select>
             </div>
             <div className="form-group">
-              <label>Documents (PHOTO):</label>
-              <input
-                type="file"
-                name="photo"
-                onChange={handlePhotoUpload}
-                required
-              />
+            <label>Upload Photo:</label>
+            <input type="file" name="photo" onChange={handleFileChange} />
             </div>
           </div>
-          <button type="submit">Add Employee</button>
+          
+          <div className="form-actions">
+            <button type="submit" className="update-button">
+              Add Employee
+            </button>
+            <button
+              type="button"
+              className="close-button"
+              onClick={() => navigate("/employeeManagement")}
+            >
+              Close
+            </button>
+          </div>
         </form>
       </div>
     </Layout>

@@ -3,7 +3,7 @@
   .calendar {
     position: relative;
     width: 300px;
-    background-color: #fff;
+    background: linear-gradient(180deg, #2f62ef, #1a4fe1);
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
