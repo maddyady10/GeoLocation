@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Circle, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -21,13 +21,17 @@ const officeIcon = new L.Icon({
   popupAnchor: [0, -32]
 });
 
-function LocationMarker({ setLocation }) {
+function LocationMarker({ setLocation, onLocationClick }) {
   const [position, setPosition] = useState(null);
 
   useMapEvents({
     click(e) {
-      setPosition(e.latlng);
-      setLocation(e.latlng);
+      const latLng = e.latlng;
+      setPosition(latLng);
+      setLocation(latLng);
+      if (onLocationClick) {
+        onLocationClick(latLng); // Call the onLocationClick callback with the latitude and longitude
+      }
     },
   });
 
@@ -38,20 +42,24 @@ function LocationMarker({ setLocation }) {
 
 LocationMarker.propTypes = {
   setLocation: PropTypes.func.isRequired,
+  onLocationClick: PropTypes.func, // Optional prop
 };
 
 function GeofenceManagement() {
   const [location, setLocation] = useState(null);
   const [officeLocations, setOfficeLocations] = useState([
-    { lat: 51.505, lng: -0.09, name: 'London', radius: 200 },
-    { lat: 48.8566, lng: 2.3522, name: 'Paris', radius: 200 },
-    { lat: 40.7128, lng: -74.0060, name: 'New York', radius: 200 },
-    { lat: 35.6895, lng: 139.6917, name: 'Tokyo', radius: 200 },
-    { lat: -33.8688, lng: 151.2093, name: 'Sydney', radius: 200 }
+    { lat: 28.6139, lng: 77.2090, name: 'Delhi', radius: 200 },
+  { lat: 19.0760, lng: 72.8777, name: 'Mumbai', radius: 200 },
+  { lat: 13.0827, lng: 80.2707, name: 'Chennai', radius: 200 },
+  { lat: 12.9716, lng: 77.5946, name: 'Bengaluru', radius: 200 },
+  { lat: 22.5726, lng: 88.3639, name: 'Kolkata', radius: 200 }
   ]);
 
   const [form, setForm] = useState({ name: '', lat: '', lng: '', radius: '' });
   const [editIndex, setEditIndex] = useState(null);
+  const [mapCoordinates, setMapCoordinates] = useState({ lat: '', lng: '' });
+
+  const formRef = useRef(null); // Reference to the form container
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -83,6 +91,10 @@ function GeofenceManagement() {
       setOfficeLocations((prevLocations) => [...prevLocations, newLocation]);
     }
     setForm({ name: '', lat: '', lng: '', radius: '' }); // Reset form
+    window.scrollTo({
+      top: formRef.current.offsetTop - 50, // Adjust this value as needed
+      behavior: 'smooth'
+    });
   };
 
   const handleEdit = (index) => {
@@ -94,6 +106,8 @@ function GeofenceManagement() {
       radius: location.radius
     });
     setEditIndex(index);
+    // Scroll to top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleDelete = (index) => {
@@ -102,12 +116,16 @@ function GeofenceManagement() {
     );
   };
 
+  const handleMapClick = (latLng) => {
+    setMapCoordinates({ lat: latLng.lat.toFixed(4), lng: latLng.lng.toFixed(4) });
+  };
+
   return (
     <Layout>
       <div className="geofence-management">
         <h2>Geofence Management</h2>
 
-        <div className="form-container">
+        <div className="form-container" ref={formRef}>
           <h3>{editIndex !== null ? 'Edit Office Location' : 'Add New Office Location'}</h3>
           <form onSubmit={handleSubmit}>
             <div className="form-row">
@@ -166,15 +184,15 @@ function GeofenceManagement() {
 
         <div className="map-container">
           <MapContainer
-            center={[51.505, -0.09]}
-            zoom={2}
+            center={[20.5937, 78.9629]}
+            zoom={5}
             style={{ height: "500px", width: "100%" }}
           >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-            <LocationMarker setLocation={setLocation} />
+            <LocationMarker setLocation={setLocation} onLocationClick={handleMapClick} />
             {officeLocations.map((loc, index) => (
               <React.Fragment key={index}>
                 <Marker position={[loc.lat, loc.lng]} icon={officeIcon}>
@@ -188,6 +206,12 @@ function GeofenceManagement() {
               </React.Fragment>
             ))}
           </MapContainer>
+        </div>
+
+        <div className="coordinates-display">
+          {mapCoordinates.lat && mapCoordinates.lng && (
+            <p>Clicked Location: Latitude {mapCoordinates.lat}, Longitude {mapCoordinates.lng}</p>
+          )}
         </div>
 
         <div className="table-container">

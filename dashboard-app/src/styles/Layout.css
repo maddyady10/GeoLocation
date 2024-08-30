@@ -3,7 +3,8 @@
     display: flex;
     min-height: 100vh;
     position: relative; /* Ensure the layout is relative for positioning child elements */
-    background: linear-gradient(180deg, #f1f2f5, #f8f8fa);
+    background: linear-gradient(to right, rgba(217, 100, 5, 0.0), rgba(0, 0, 0, 0.0)), 
+    url('../assets/bg3.png') no-repeat center center fixed;
   }
  
 

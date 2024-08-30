@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/EmployeeForm.css";
 import Layout from "./Layout";
+import axios from "axios";
 
-function EmployeeForm({ addEmployee }) {
+function EmployeeForm() {
   const [form, setForm] = useState({
     staffId: "",
     fullName: "",
     email: "",
     gender: "",
     phone: "",
-    department: "",
+    OfficeId: "",
     designation: "",
-    documents: null,
     photo: null,
   });
 
@@ -34,10 +34,31 @@ function EmployeeForm({ addEmployee }) {
     }));
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    addEmployee(form);
-    navigate("/employeeManagement"); // Navigate back to employee management page
+    if (!form.gender || !form.designation) {
+      alert("Please fill all required fields.");
+      return;
+    }
+
+    console.log("the form", form);
+    try {
+      const formData = new FormData();
+      for (const key in form) {
+        formData.append(key, form[key]);
+      }
+
+      const response = await axios.post("http://localhost:4000/api/web/employeeDetails", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      console.log(response);
+      navigate("/employee-management"); // Navigate back to employee management page
+    } catch (error) {
+      console.error("Error submitting the form", error);
+    }
   };
 
   return (
@@ -87,6 +108,7 @@ function EmployeeForm({ addEmployee }) {
                 onChange={handleFormChange}
                 required
               >
+                <option value="" disabled>Select gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
@@ -105,11 +127,11 @@ function EmployeeForm({ addEmployee }) {
               />
             </div>
             <div className="form-group">
-              <label>Department:</label>
+              <label>Office ID:</label>
               <input
                 type="text"
-                name="department"
-                value={form.department}
+                name="OfficeId"
+                value={form.OfficeId}
                 onChange={handleFormChange}
                 required
               />
@@ -124,14 +146,15 @@ function EmployeeForm({ addEmployee }) {
                 onChange={handleFormChange}
                 required
               >
+                <option value="" disabled>Select designation</option>
                 <option value="Assistant">Assistant</option>
                 <option value="Manager">Manager</option>
                 <option value="Director">Director</option>
               </select>
             </div>
             <div className="form-group">
-            <label>Upload Photo:</label>
-            <input type="file" name="photo" onChange={handleFileChange} />
+              <label>Upload Photo:</label>
+              <input type="file" name="photo" onChange={handleFileChange} />
             </div>
           </div>
           
