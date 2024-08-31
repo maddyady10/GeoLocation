@@ -3,9 +3,17 @@ import '../styles/RemoteAccess.css'; // Optional: Create a CSS file for styling
 import Layout from './Layout';
 
 function RemoteAccess() {
-  const [remoteLocations, setRemoteLocations] = useState([]);
-  const [pendingApprovals, setPendingApprovals] = useState([]);
-  const [approvedEntries, setApprovedEntries] = useState([]);
+  const [viewRemoteLocations, setViewRemoteLocations] = useState([]);
+  const [approvedLocations, setApprovedLocations] = useState([]);
+  const [pendingApprovals, setPendingApprovals] = useState([
+    {
+      requestor: 'John Doe',
+      locationName: 'New Office',
+      latitude: '40.7128',
+      longitude: '-74.0060',
+    },
+    // Add more pending approvals here if needed
+  ]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
@@ -25,15 +33,15 @@ function RemoteAccess() {
 
   const handleSubmit = () => {
     if (editIndex !== null) {
-      // Edit existing entry
-      const updatedLocations = remoteLocations.map((location, index) =>
+      // Edit existing entry in viewRemoteLocations
+      const updatedLocations = viewRemoteLocations.map((location, index) =>
         index === editIndex ? formData : location
       );
-      setRemoteLocations(updatedLocations);
+      setViewRemoteLocations(updatedLocations);
       setEditIndex(null);
     } else {
-      // Add new entry
-      setPendingApprovals([...pendingApprovals, formData]);
+      // Add new entry to viewRemoteLocations
+      setViewRemoteLocations([...viewRemoteLocations, formData]);
     }
     setFormData({
       remoteOfficeName: '',
@@ -44,27 +52,25 @@ function RemoteAccess() {
     setIsModalOpen(false);
   };
 
-  const handleApprove = (index) => {
-    const approvedEntry = pendingApprovals[index];
-    setApprovedEntries([...approvedEntries, approvedEntry]);
-    const updatedPendingApprovals = pendingApprovals.filter((_, i) => i !== index);
-    setPendingApprovals(updatedPendingApprovals);
-  };
-
-  const handleReject = (index) => {
-    const updatedPendingApprovals = pendingApprovals.filter((_, i) => i !== index);
-    setPendingApprovals(updatedPendingApprovals);
-  };
-
   const handleEdit = (index) => {
-    setFormData(pendingApprovals[index]);
+    setFormData(viewRemoteLocations[index]);
     setEditIndex(index);
     setIsModalOpen(true);
   };
 
   const handleDelete = (index) => {
-    const updatedApprovedEntries = approvedEntries.filter((_, i) => i !== index);
-    setApprovedEntries(updatedApprovedEntries);
+    const updatedLocations = viewRemoteLocations.filter((_, i) => i !== index);
+    setViewRemoteLocations(updatedLocations);
+  };
+
+  const handleApprove = (index) => {
+    const approvedEntry = pendingApprovals[index];
+    setApprovedLocations([...approvedLocations, approvedEntry]);
+    setPendingApprovals(pendingApprovals.filter((_, i) => i !== index));
+  };
+
+  const handleReject = (index) => {
+    setPendingApprovals(pendingApprovals.filter((_, i) => i !== index));
   };
 
   return (
@@ -86,18 +92,16 @@ function RemoteAccess() {
                 <th>Location Name</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
-                <th>Radius</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {pendingApprovals.map((entry, index) => (
                 <tr key={index}>
-                  <td>Example Requestor</td>
-                  <td>{entry.remoteOfficeName}</td>
+                  <td>{entry.requestor}</td>
+                  <td>{entry.locationName}</td>
                   <td>{entry.latitude}</td>
                   <td>{entry.longitude}</td>
-                  <td>{entry.radius}</td>
                   <td>
                     <div className="buttons-container2">
                       <button className="approve-btn" onClick={() => handleApprove(index)}>Approve</button>
@@ -116,26 +120,19 @@ function RemoteAccess() {
           <table>
             <thead>
               <tr>
-                <th>Office Name</th>
+                <th>Requestor</th>
+                <th>Location Name</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
-                <th>Radius (m)</th>
-                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {approvedEntries.map((entry, index) => (
+              {approvedLocations.map((location, index) => (
                 <tr key={index}>
-                  <td>{entry.remoteOfficeName}</td>
-                  <td>{entry.latitude}</td>
-                  <td>{entry.longitude}</td>
-                  <td>{entry.radius}</td>
-                  <td>
-                    <div className="buttons-container2">
-                      <button className="edit-btn" onClick={() => handleEdit(index)}>Edit</button>
-                      <button className="delete-btn" onClick={() => handleDelete(index)}>Delete</button>
-                    </div>
-                  </td>
+                  <td>{location.requestor}</td>
+                  <td>{location.locationName}</td>
+                  <td>{location.latitude}</td>
+                  <td>{location.longitude}</td>
                 </tr>
               ))}
             </tbody>
@@ -197,7 +194,7 @@ function RemoteAccess() {
         <div className={`modal ${isViewModalOpen ? 'open' : ''}`}>
           <div className="modal-content">
             <h3>View Remote Locations</h3>
-            {remoteLocations.length === 0 ? (
+            {viewRemoteLocations.length === 0 ? (
               <p>No remote locations added yet.</p>
             ) : (
               <table>
@@ -211,7 +208,7 @@ function RemoteAccess() {
                   </tr>
                 </thead>
                 <tbody>
-                  {remoteLocations.map((location, index) => (
+                  {viewRemoteLocations.map((location, index) => (
                     <tr key={index}>
                       <td>{location.remoteOfficeName}</td>
                       <td>{location.latitude}</td>
