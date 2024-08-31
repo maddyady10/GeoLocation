@@ -11,10 +11,18 @@ function EmployeeForm() {
     email: "",
     gender: "",
     phone: "",
-    OfficeId: "", 
+    OfficeId: "",
     designation: "",
     photo: null,
   });
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  // State to track the action button state for each location
+  const [locationActions, setLocationActions] = useState([
+    { id: 1, name: "Office location 2", lat: "33.670015952204", lng: "73.00055932031", radius: 50, action: "REMOVE" },
+    { id: 2, name: "Main Branch", lat: "33.6680564026", lng: "72.973488165703", radius: 100, action: "REMOVE" },
+  ]);
 
   const navigate = useNavigate();
 
@@ -60,6 +68,52 @@ function EmployeeForm() {
       console.error("Error submitting the form", error);
     }
   };
+
+  const toggleAction = (id) => {
+    setLocationActions((prevActions) =>
+      prevActions.map((location) =>
+        location.id === id ? { ...location, action: location.action === "REMOVE" ? "ADD" : "REMOVE" } : location
+      )
+    );
+  };
+
+  const Popup = ({ onClose }) => (
+    <div className="popup">
+      <div className="popup-content">
+        <h3>Add/Remove Attendance Locations</h3>
+        <p>Here You can add or remove the user from any attendance location</p>
+        <table>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Name</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th>Radius</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {locationActions.map((location) => (
+              <tr key={location.id}>
+                <td>{location.id}</td>
+                <td>{location.name}</td>
+                <td>{location.lat}</td>
+                <td>{location.lng}</td>
+                <td>{location.radius}</td>
+                <td>
+                  <button className="remove-button" onClick={() => toggleAction(location.id)}>
+                    {location.action}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <button onClick={onClose} style={{backgroundColor: '#f44336',color: '#ffffff',padding: '10px 20px',border: 'none',borderRadius: '4px',cursor: 'pointer',}} className="cloose-popup-button">Close</button>
+      </div>
+    </div>
+  );
 
   return (
     <Layout>
@@ -127,18 +181,6 @@ function EmployeeForm() {
               />
             </div>
             <div className="form-group">
-              <label>Office ID:</label>
-              <input
-                type="text"
-                name="OfficeId"
-                value={form.OfficeId}
-                onChange={handleFormChange}
-                required
-              />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="form-group">
               <label>Designation:</label>
               <select
                 name="designation"
@@ -152,9 +194,16 @@ function EmployeeForm() {
                 <option value="Director">Director</option>
               </select>
             </div>
+          </div>
+
+          <div className="form-row">
             <div className="form-group">
               <label>Upload Photo:</label>
               <input type="file" name="photo" onChange={handleFileChange} />
+            </div>
+            <div className="form-group">
+              <label>Office ID:</label>
+              <button type="button" onClick={() => setIsPopupOpen(true)}>CLICK ME</button>
             </div>
           </div>
           
@@ -171,6 +220,7 @@ function EmployeeForm() {
             </button>
           </div>
         </form>
+        {isPopupOpen && <Popup onClose={() => setIsPopupOpen(false)} />}
       </div>
     </Layout>
   );

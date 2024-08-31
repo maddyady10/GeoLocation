@@ -234,8 +234,9 @@ function GeofenceManagement() {
                   <td>{loc.lng}</td>
                   <td>{loc.radius}</td>
                   <td>
-                    <button onClick={() => handleEdit(index)}>Edit</button>
-                    <button onClick={() => handleDelete(index)}>Delete</button>
+                  <div className="buttons-container2">
+                    <button className="approve-btn" onClick={() => handleEdit(index)}>Edit</button>
+                    <button className="reject-btn" onClick={() => handleDelete(index)}>Delete</button></div>
                   </td>
                 </tr>
               ))}

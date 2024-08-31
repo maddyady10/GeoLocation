@@ -52,3 +52,23 @@ h2{
 .employee-form button:hover {
   background-color: #45a049;
 }
+
+.add-employee-button button
+{
+  background-color: #4653c5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 18%;
+  text-align: center;
+  font-size: 14px;
+
+}
+
+
+.add-employee-button button:hover
+{
+background-color: #060606;
+transform: scale(1.05);}

@@ -8,7 +8,7 @@ import GeofenceManagement from './components/GeofenceManagement';
 import EmployeeManagement from './components/EmployeeManagement';
 import DeviceManagement from './components/DeviceManagement';
 import RemoteAccess from './components/RemoteAccess';
-import RemoteOffice from './components/RemoteOffice';
+
 import Login from './components/Login';
 import Signup from './components/Signup';
 import AttendanceManagement from './components/AttendanceManagement';
@@ -29,7 +29,7 @@ function App() {
         <Route path="/employee-management" element={<EmployeeManagement />} />
         <Route path="/device-management" element={<DeviceManagement />} />
         <Route path="/remote-access" element={<RemoteAccess />} />
-        <Route path="/remote-office" element={RemoteOffice} />
+      
         <Route path="/login" component={Login} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/empform" element={<EmployeeForm />} />

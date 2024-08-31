@@ -106,9 +106,9 @@ const DashboardContent = () => {
                         display: false,
                       },
                       ticks: {
-                        color: '#ff1100',
+                        color: 'black',
                         font: {
-                          size: 14,
+                          size: 15,
                         }
                       }
                     },
@@ -118,9 +118,9 @@ const DashboardContent = () => {
                         color: 'rgba(255, 255, 255, 0.9)',
                       },
                       ticks: {
-                        color: '#ff1100',
+                        color: 'black',
                         font: {
-                          size: 14,
+                          size: 15,
                         }
                       }
                     }
@@ -163,7 +163,7 @@ function Dashboard() {
     const checkTime = () => {
       const now = new Date();
       const hours = now.getHours();
-      setIsWithinWorkingHours(hours >= 8 && hours < 12);
+      setIsWithinWorkingHours(hours >= 0 && hours < 24);
     };
 
     checkTime(); // Initial check

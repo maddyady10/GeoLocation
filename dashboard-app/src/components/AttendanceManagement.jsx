@@ -8,7 +8,7 @@ import Layout from "./Layout";
 import { FaEye } from "react-icons/fa"; // Eye icon from react-icons
 
 // Import your user icon image
-import userIcon from "../assets/user-icon.png"; // Make sure the path is correct
+import userIcon from "../assets/user-icon.png"; 
 
 function AttendanceManagement() {
   const navigate = useNavigate();
@@ -90,12 +90,12 @@ function AttendanceManagement() {
     });
   };
 
-  // Create a custom icon for the user
+ 
   const userMarkerIcon = L.icon({
     iconUrl: userIcon,
-    iconSize: [32, 32], // Size of the icon
-    iconAnchor: [16, 32], // Point of the icon which will correspond to marker's location
-    popupAnchor: [0, -32], // Point from which the popup should open relative to the iconAnchor
+    iconSize: [32, 32], 
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32], 
   });
 
   return (
@@ -109,8 +109,8 @@ function AttendanceManagement() {
         </button>
         {/* Modal for Adding Attendance */}
         {showModal && (
-          <div className="modal">
-            <div className="modal-content">
+          <div className="modall">
+            <div className="modall-content">
               <h3>
                 Add Manual Attendance Here you can add attendance manually
               </h3>
@@ -186,12 +186,12 @@ function AttendanceManagement() {
                   maxLength="250"
                 ></textarea>
               </div>
-              <div className="modal-buttons">
+              <div className="modall-buttons">
                 <button className="submit-btn" onClick={handleSubmit}>
                   Add
                 </button>
                 <button
-                  className="close-btn"
+                  className="closee-btn"
                   onClick={() => setShowModal(false)}
                 >
                   Close

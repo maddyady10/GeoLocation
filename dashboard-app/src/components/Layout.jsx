@@ -2,7 +2,7 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
-import '../styles/Layout.css'; // Ensure this CSS file is correctly referenced
+import '../styles/Layout.css'; 
 
 function Layout({ children }) {
   return (

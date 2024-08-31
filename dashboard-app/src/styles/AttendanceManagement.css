@@ -22,6 +22,12 @@
   cursor: pointer;
 }
 
+.add-attendance-btn:hover
+{
+  background-color: #060606;
+  transform: scale(1.05);}
+
+
 .map-container {
   height: 500px;
   width: 100%;
@@ -59,7 +65,7 @@
   color: white;
 }
 
-.modal {
+.modall {
   position: fixed;
   top: 0;
   left: 0;
@@ -72,7 +78,7 @@
   z-index: 1000;
 }
 
-.modal-content {
+.modall-content {
   background-color: white;
   padding: 40px;
   border-radius: 10px;
@@ -107,13 +113,13 @@ textarea {
   height: 80px;
 }
 
-.modal-buttons {
+.modall-buttons {
   display: flex;
   justify-content: space-between;
 }
 
 .submit-btn,
-.close-btn {
+.closee-btn {
   background-color: #4653c5;
   color: white;
   border: none;
@@ -126,13 +132,13 @@ textarea {
 }
 
 .submit-btn:hover,
-.close-btn:hover {
-  background-color: #3542a3;
+.closee-btn:hover {
+  background-color: #050505;
 }
-.modal-content {
+.modall-content {
   max-height: 80vh; /* Set a maximum height for the modal content */
   overflow-y: auto; /* Enable vertical scrolling if content exceeds the max height */
   padding: 20px;
-  background-color: white;
+  background-color: rgb(246, 245, 251);
   border-radius: 8px;
 }
