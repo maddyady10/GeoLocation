@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
-import CalendarComponent from './CalendarComponent'; // Import the new calendar component
-import { Chart, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2'; // Import Doughnut chart for gauge effect
-import '../styles/Dashboard.css'; // You can create this CSS file for styling
-import OutWork from './OutWork'; // Import the OutWork component
+import CalendarComponent from './CalendarComponent';
+import { Chart, ArcElement, LineElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement } from 'chart.js';
+import { Doughnut, Line } from 'react-chartjs-2';
+import { motion } from 'framer-motion';
+import '../styles/Dashboard.css';
+import OutWork from './OutWork';
 
-// Register the required components for Chart.js
-Chart.register(ArcElement, Tooltip, Legend);
+Chart.register(ArcElement, LineElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement);
 
 const DashboardContent = () => {
   const data = {
@@ -18,7 +18,7 @@ const DashboardContent = () => {
     inactive: 50,
   };
 
-  const gaugeData1 = {
+  const doughnutData = {
     labels: ['Present', 'Absent'],
     datasets: [{
       data: [data.present, data.absent],
@@ -28,90 +28,131 @@ const DashboardContent = () => {
     }],
   };
 
-  const gaugeData2 = {
-    labels: ['Active', 'Inactive'],
+  const lineData = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
     datasets: [{
-      data: [data.active, data.inactive],
-      backgroundColor: ['#007bff', '#ffc107'],
-      borderColor: ['#fff', '#fff'],
-      borderWidth: 1,
+      label: 'Monthly Attendance',
+      data: [65, 59, 80, 81, 56, 55],
+      fill: true,
+      backgroundColor: 'rgba(0, 123, 255, 0.2)',
+      borderColor: '#00d4ff',
+      borderWidth: 2,
+      pointBorderColor: '#00d4ff',
+      pointBackgroundColor: '#000',
+      tension: 0.3,
+      hoverBackgroundColor: '#00ff8c',
     }],
   };
 
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1 } },
+  };
+
+  const slideIn = {
+    hidden: { x: -100 },
+    visible: { x: 0, transition: { duration: 1 } },
+  };
+
   return (
-    <div className="dashboard">
+    <motion.div className="dashboard" initial="hidden" animate="visible" variants={fadeIn}>
       <Navbar />
       <div className="dashboard-content">
+        <br></br>
         <Sidebar />
         <main className="main-content">
-          <br></br>
+        <br></br>
           <h1>Welcome to the Dashboard</h1>
           <h4>Manage employee attendance, view detailed reports, and streamline operations with ease. Everything you need is right here.</h4>
 
-          {/* Statistics */}
           <div className="stats-container">
-            <div className="stat-item present">Present: {data.present}</div>
-            <div className="stat-item absent">Absent: {data.absent}</div>
-            <div className="stat-item active">Active: {data.active}</div>
-            <div className="stat-item inactive">Inactive: {data.inactive}</div>
+            <motion.div className="stat-item present" variants={slideIn}>Present: {data.present}</motion.div>
+            <motion.div className="stat-item absent" variants={slideIn}>Absent: {data.absent}</motion.div>
+            <motion.div className="stat-item active" variants={slideIn}>Active: {data.active}</motion.div>
+            <motion.div className="stat-item inactive" variants={slideIn}>Inactive: {data.inactive}</motion.div>
           </div>
 
-          {/* Gauge Charts */}
+          {/* Charts Section */}
           <div className="charts-container">
-            <div className="chart">
+            <motion.div className="chart small-chart" initial={{ scale: 0.8 }} animate={{ scale: 1 }} transition={{ duration: 1 }}>
               <h2>Present vs Absent</h2>
-              <Doughnut data={gaugeData1} options={{
-                cutout: '80%',
-                radius: '100%',
-                circumference: 180,
-                rotation: -90,
-                plugins: {
-                  legend: {
-                    display: false,
-                  },
-                  tooltip: {
-                    callbacks: {
-                      label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}%`
+              <Doughnut
+                data={doughnutData}
+                options={{
+                  cutout: '75%',
+                  plugins: {
+                    legend: {
+                      display: false,
+                    },
+                    tooltip: {
+                      callbacks: {
+                        label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}%`
+                      }
                     }
                   }
-                }
-              }} />
-            </div>
-            <div className="chart">
-              <h2>Active vs Inactive</h2>
-              <Doughnut data={gaugeData2} options={{
-                cutout: '80%',
-                radius: '100%',
-                circumference: 180,
-                rotation: -90,
-                plugins: {
-                  legend: {
-                    display: false,
+                }}
+              />
+            </motion.div>
+
+            <motion.div className="chart" initial={{ scale: 0.8 }} animate={{ scale: 1 }} transition={{ duration: 1 }}>
+              <h2>Attendance Over Time</h2>
+              <Line
+                data={lineData}
+                options={{
+                  scales: {
+                    x: {
+                      beginAtZero: true,
+                      grid: {
+                        display: false,
+                      },
+                      ticks: {
+                        color: '#ff1100',
+                        font: {
+                          size: 14,
+                        }
+                      }
+                    },
+                    y: {
+                      beginAtZero: true,
+                      grid: {
+                        color: 'rgba(255, 255, 255, 0.9)',
+                      },
+                      ticks: {
+                        color: '#ff1100',
+                        font: {
+                          size: 14,
+                        }
+                      }
+                    }
                   },
-                  tooltip: {
-                    callbacks: {
-                      label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}%`
+                  plugins: {
+                    legend: {
+                      display: true,
+                      position: 'top',
+                      labels: {
+                        color: '#0033ff',
+                        font: {
+                          size: 14,
+                        }
+                      }
                     }
                   }
-                }
-              }} />
-            </div>
+                }}
+              />
+            </motion.div>
           </div>
 
-          {/* Leave Requests */}
-          <div className="leave-requests">
+          <motion.div className="leave-requests" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
             <h2>Leave Requests</h2>
             <p>No new leave requests</p>
-          </div>
+          </motion.div>
         </main>
 
-        {/* Static Calendar Component */}
         <aside className="calendar-section">
-          <br></br><br></br>
           <CalendarComponent />
         </aside>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -122,7 +163,7 @@ function Dashboard() {
     const checkTime = () => {
       const now = new Date();
       const hours = now.getHours();
-      setIsWithinWorkingHours(hours >= 8 && hours < 22);
+      setIsWithinWorkingHours(hours >= 8 && hours < 12);
     };
 
     checkTime(); // Initial check

@@ -1,48 +1,243 @@
-/* src/styles/RemoteAccess.css */
 .remote-access {
-    padding: 20px;
-  }
-  
-  .pending-approvals, .approved-entries {
-    margin-bottom: 20px;
-  }
-  
-  .filters {
-    margin-bottom: 20px;
-  }
-  
-  .filter-input {
-    margin-right: 10px;
-    padding: 8px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  table, th, td {
-    border: 1px solid #ddd;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .approve-btn, .reject-btn {
-    margin-right: 10px;
-    padding: 5px 10px;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .approve-btn {
-    background-color: #28a745;
-  }
-  
-  .reject-btn {
-    background-color: #dc3545;
-  }
-  
+  padding: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.pending-approvals,
+.approved-entries {
+  margin-top: 40px;
+}
+
+.pending-approvals h3,
+.approved-entries h3 {
+  margin-bottom: 10px;
+}
+
+.pending-approvals table,
+.approved-entries table,
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.pending-approvals th,
+.approved-entries th,
+table th,
+table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.pending-approvals th,
+.approved-entries th,
+table th {
+  background-color: #f8f9fa;
+}
+
+.filters,
+.manual-entry-btn,
+.filter-input {
+  margin-bottom: 20px;
+}
+
+.filter-input {
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.manual-entry-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  gap: 30px;
+}
+
+.manual-entry-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.approve-btn,
+.reject-btn,
+.edit-btn,
+.delete-btn {
+  padding: 5px 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.approve-btn {
+  background-color: #28a745;
+}
+
+.reject-btn {
+  background-color: #dc3545;
+}
+
+.approve-btn:hover,
+.reject-btn:hover,
+.edit-btn:hover,
+.delete-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+.edit-btn {
+  background-color: #05500d;
+}
+
+.delete-btn {
+  background-color: #eb0e0a;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #eeeeec, #c5ccde);
+  padding: 20px;
+  border-radius: 12px;
+  width: 50%;
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.modal-content:hover {
+  transform: scale(1.02);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal-content label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #0e0e0e;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: calc(100% - 20px);
+}
+
+.modal-content input:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-buttons button:first-child {
+  background-color: #28a745;
+}
+
+.modal-buttons button:last-child {
+  background-color: #dc3545;
+}
+
+.modal-buttons button:hover {
+  transform: scale(1.05);
+}
+
+.close-btn {
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #007bff;
+}
+
+.location-item {
+  padding: 10px;
+  margin: 10px 0;
+  border-bottom: 1px solid #7a3b3b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location-buttons,
+.buttons-container {
+  display: flex;
+  gap: 30px; /* Increased spacing between buttons */
+}
+
+.buttons-container2 {
+  display: flex;
+  gap: 20px; /* Increased spacing between buttons */
+}

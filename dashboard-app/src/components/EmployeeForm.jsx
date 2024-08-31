@@ -11,7 +11,7 @@ function EmployeeForm() {
     email: "",
     gender: "",
     phone: "",
-    OfficeId: "",
+    OfficeId: "", 
     designation: "",
     photo: null,
   });

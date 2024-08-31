@@ -21,7 +21,7 @@ const Sidebar = () => {
         <li><a href="/overview">Dashboard Overview</a></li>
         <li><a href="/geofence-management">Geofence Management</a></li>
         <li><a href="/employee-management">Employee Management</a></li>
-        <li><a href="/device-management">Device Management</a></li>
+       
         <li><a href="/attendance-management">Attendance Management</a></li>
         <li><a href="/remote-access">Remote Access</a></li>
       </ul>

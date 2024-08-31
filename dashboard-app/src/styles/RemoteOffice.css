@@ -1,0 +1,66 @@
+.remote-office {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .remote-office h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .remote-office form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .remote-office label {
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .remote-office input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .remote-office .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .remote-office .form-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .remote-office .form-buttons button[type="button"] {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .remote-office .form-buttons button[type="button"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .remote-office .form-buttons button[type="button"].cancel {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  .remote-office .form-buttons button[type="button"].cancel:hover {
+    background-color: #5a6268;
+  }
+  
